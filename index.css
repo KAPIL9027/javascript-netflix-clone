@@ -54,6 +54,44 @@ max-width: 8rem;
     background: transparent;
 }
 
+.movies-section {
+    margin: 2rem 1rem;
+}
+
+.movies-heading-text {
+    color: white;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+
+.explore {
+    font-size: 0.9rem;
+    color:aqua;
+    margin-left: 0.6rem;
+    display: none;
+    transition: display 1s ease-in;
+}
+
+.movies-heading-text:hover .explore{
+ display: inline-block;
+}
+.movie-image {
+    width: 20rem;
+    border-radius: 1rem;
+    transition: transform 0.5s ease-in;
+}
+
+.movies-images {
+    justify-content: flex-start;
+}
+
+.movie-image:hover {
+    transform: scale(1.25);
+}
+
+
 @media screen and (max-width: 979px) {
     .nav-main {
       display:none;
