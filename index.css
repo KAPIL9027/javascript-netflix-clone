@@ -52,6 +52,11 @@ max-width: 8rem;
 .header {
     justify-content: space-between;
     background: transparent;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    width: 100%;
 }
 
 .movies-section {
@@ -91,6 +96,59 @@ max-width: 8rem;
     transform: scale(1.25);
 }
 
+.banner-section {
+    width: 100%;
+    height: 98vh;
+    color: white;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    
+}
+
+.banner-section-heading {
+    font-size: 4rem;
+}
+
+.banner-section-text {
+    font-size: 1.15rem;
+}
+.banner-section-subheading {
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+
+.banner-content {
+     width: 40%;
+     flex-direction: column;
+     align-items: flex-start;
+     margin-left: 2rem;
+     padding: 4rem;
+}
+.banner-action-button {
+    gap: 1rem;
+    border-radius: 5px;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    font-weight: 700;
+    font-size: 1.05rem;
+    cursor:pointer;
+}
+
+.banner-action-button:last-child
+{
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+}
+
+.banner-overlay {
+position: absolute;
+height: 120px;
+width: 100%;
+left:0;
+bottom:0;
+background: linear-gradient(180deg, transparent, rgba(37,37,37,.61), #141414 );;
+}
 
 @media screen and (max-width: 979px) {
     .nav-main {
