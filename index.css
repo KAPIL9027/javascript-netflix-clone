@@ -51,14 +51,17 @@ max-width: 8rem;
 
 .header {
     justify-content: space-between;
-    background: transparent;
+    background-color: transparent;
     position: fixed;
     left: 0;
     top: 0;
     z-index: 10;
     width: 100%;
+    padding: 0.5rem 2rem;
 }
-
+.bg-black {
+    background-color: rgb(20,20,20);
+}
 .movies-section {
     margin: 2rem 1rem;
 }
@@ -76,24 +79,40 @@ max-width: 8rem;
     color:aqua;
     margin-left: 0.6rem;
     display: none;
-    transition: display 1s ease-in;
+    transition: display ease-in 1s;
 }
 
 .movies-heading-text:hover .explore{
  display: inline-block;
 }
-.movie-image {
+.movie-item {
     width: 20rem;
     border-radius: 1rem;
-    transition: transform 0.5s ease-in;
+    transition: transform 0.8s ease-in;
+    position: relative;
+}
+.movie-item-iframe {
+position: absolute;
+left: 0;
+top: 0;
+width: 100%;
+display: none;
+border-radius: 10px;
+
+}
+.movie-image {
+  width: 100%;  
 }
 
 .movies-images {
     justify-content: flex-start;
 }
 
-.movie-image:hover {
-    transform: scale(1.25);
+.movie-item:hover, .movie-item:hover .movie-item-iframe{
+    transform: scale(1.10);
+    display: block;
+    height: 12rem;
+    z-index: 100;
 }
 
 .banner-section {

@@ -1,11 +1,12 @@
 const apiKey = 'b340fbfa288c7fbe12cd5062b4dc18c5';
 const apiEndPoint = 'https://api.themoviedb.org/3/';
-
 const apiPaths = {
     getAllCategories: `${apiEndPoint}/genre/movie/list?api_key=${apiKey}&language=en-US`,
     getMovies: (genre)=> `${apiEndPoint}/discover/movie?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=true&page=1&with_watch_monetization_types=flatrate&with_genres=${genre}`,
     frontUrl: 'https://image.tmdb.org/t/p/original',
-    getTrending: `${apiEndPoint}/trending/movie/day?api_key=${apiKey}&language=en-US`
+    getTrending: `${apiEndPoint}/trending/movie/day?api_key=${apiKey}&language=en-US`,
+    youtubeTrailer: (query)=> `https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${query}&key=AIzaSyATRYW9EilaOMU4QweVCpnfwVGniPm7RNk`,
+    videoUrl: (video_id) => `https://www.youtube.com/watch?v=${video_id}`
 }
 const init = ()=> {
     trendingSection();
@@ -28,9 +29,19 @@ const getMoviesandBuild = (url,category)=>{
     return fetch(url).then((res)=> res.json()).then((res)=> {
         const movies = res.results;
          const moviesCont = document.querySelector('.movies-cont');
+
         const htmlImgElements = movies.slice(0,4).map((movie)=>{
-          return `<img class="movie-image" alt="${movie.title}" src="${apiPaths.frontUrl}${movie.backdrop_path}">`
+         return `
+         <div class="movie-item">
+         <img class="movie-image" alt="${movie.title}" src="${apiPaths.frontUrl}${movie.backdrop_path}">
+         <iframe class="movie-item-iframe" id="${movie.id}" onmouseover="getYoutubeTrailer('${movie.title}','${movie.id}')"
+         src="https://www.youtube.com/embed/tgbNymZ7vqY">
+         </iframe>
+         </div>
+         `
+         
         }).join("");
+        console.log(htmlImgElements);
          const div = document.createElement('div');
          div.className = 'movies-section';
          div.innerHTML = `<h2 class="movies-heading-text">${category}<span class="explore">Explore all</span></h2>
@@ -75,6 +86,33 @@ const trendingSection = ()=>{
 
      }).catch((e)=>{console.log(e)});
 }
+ function getYoutubeTrailer(query,id)
+{
+    
+    const url = apiPaths.youtubeTrailer(query);
+    fetch(url).then((res)=>res.json()).then((res)=>{
+    const item = res.items[0];
+    console.log(item);
+    const video_id = item.id.videoId;
+    // console.log(id);
+    // const frame = document.getElementById(`${id}`);
+    // console.log(frame);
+    // console.log(`https://www.youtube.com/embed/${video_id}`);
+    // frame.src =  `https://www.youtube.com/embed/${video_id}`;
+    }).catch((e)=>{console.log(e)});
+}
 window.addEventListener('load',()=>{
     init();
+})
+
+window.addEventListener('scroll',()=>{
+    const header = document.querySelector('.header');
+    if(window.scrollY > 5)
+    {
+        
+        header.classList.add('bg-black');
+    }
+    else {
+        header.classList.remove('bg-black');
+    }
 })
