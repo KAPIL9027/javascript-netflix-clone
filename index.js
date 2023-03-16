@@ -1,5 +1,6 @@
 const apiKey = 'b340fbfa288c7fbe12cd5062b4dc18c5';
 const apiEndPoint = 'https://api.themoviedb.org/3/';
+const youtubeAPIKey = 'AIzaSyATRYW9EilaOMU4QweVCpnfwVGniPm7RNk';
 const apiPaths = {
     getAllCategories: `${apiEndPoint}/genre/movie/list?api_key=${apiKey}&language=en-US`,
     getMovies: (genre)=> `${apiEndPoint}/discover/movie?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=true&page=1&with_watch_monetization_types=flatrate&with_genres=${genre}`,
@@ -97,8 +98,8 @@ const trendingSection = ()=>{
     console.log(id);
     const frame = document.getElementById(`${id}`);
     console.log(frame);
-    console.log(`https://www.youtube.com/embed/${video_id}`);
-    frame.src =  `https://www.youtube.com/embed/${video_id}`;
+    console.log(`https://www.youtube.com/embed/${video_id}?autoplay=1`);
+    frame.src =  `https://www.youtube.com/embed/${video_id}?autoplay=1`;
     }).catch((e)=>{console.log(e)});
 }
 window.addEventListener('load',()=>{
