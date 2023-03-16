@@ -35,7 +35,7 @@ const getMoviesandBuild = (url,category)=>{
          <div class="movie-item">
          <img class="movie-image" alt="${movie.title}" src="${apiPaths.frontUrl}${movie.backdrop_path}">
          <iframe class="movie-item-iframe" id="${movie.id}" onmouseover="getYoutubeTrailer('${movie.title}','${movie.id}')"
-         src="https://www.youtube.com/embed/tgbNymZ7vqY">
+         src="">
          </iframe>
          </div>
          `
@@ -94,11 +94,11 @@ const trendingSection = ()=>{
     const item = res.items[0];
     console.log(item);
     const video_id = item.id.videoId;
-    // console.log(id);
-    // const frame = document.getElementById(`${id}`);
-    // console.log(frame);
-    // console.log(`https://www.youtube.com/embed/${video_id}`);
-    // frame.src =  `https://www.youtube.com/embed/${video_id}`;
+    console.log(id);
+    const frame = document.getElementById(`${id}`);
+    console.log(frame);
+    console.log(`https://www.youtube.com/embed/${video_id}`);
+    frame.src =  `https://www.youtube.com/embed/${video_id}`;
     }).catch((e)=>{console.log(e)});
 }
 window.addEventListener('load',()=>{
