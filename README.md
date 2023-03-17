@@ -11,6 +11,11 @@ Overall, this project has been an excellent opportunity for me to showcase my sk
 
 Live Link: https://kapil9027.github.io/javascript-netflix-clone/
 
+# ScreenShots
+![image](https://user-images.githubusercontent.com/76560065/225848307-1932778d-6ae4-494e-bbc8-42db8ee06137.png)
+![image](https://user-images.githubusercontent.com/76560065/225848440-6c5de8af-6f22-46b7-b0f6-7e6bb4ad42b2.png)
+
+
 Future Work: Trying to create the netflix Carousel to traverse through a large number of movies.
 ## Tech Stack
 
