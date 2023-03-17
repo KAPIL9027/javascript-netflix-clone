@@ -31,7 +31,7 @@ const getMoviesandBuild = (url,category)=>{
         const movies = res.results;
          const moviesCont = document.querySelector('.movies-cont');
 
-        const htmlImgElements = movies.slice(0,4).map((movie)=>{
+        const htmlImgElements = movies.slice(0,10).map((movie)=>{
          return `
          <div class="movie-item">
          <img class="movie-image" alt="${movie.title}" src="${apiPaths.frontUrl}${movie.backdrop_path}">
@@ -46,9 +46,14 @@ const getMoviesandBuild = (url,category)=>{
          const div = document.createElement('div');
          div.className = 'movies-section';
          div.innerHTML = `<h2 class="movies-heading-text">${category}<span class="explore">Explore all</span></h2>
-         <div class="movies-images flex">
-            ${htmlImgElements}
-         </div>`;
+        <div class="casarol flex">
+        <button class="movies-section-button button-left"><div>&#8592;</div></button>
+        <div class="movies-images flex">
+        ${htmlImgElements}
+     </div>
+        <button class="movies-section-button button-right"><div>&#8594;</div></button>
+        </div>
+         `;
          moviesCont.append(div);
          return movies;
     }).catch((e)=>{console.log(e)});
@@ -56,10 +61,8 @@ const getMoviesandBuild = (url,category)=>{
 
 const trendingSection = ()=>{
        getMoviesandBuild(apiPaths.getTrending,'Trending').then((list)=>{
-        console.log(list);
         const bannerSection = document.querySelector('.banner-section');
         const index = parseInt(Math.random()*(list.length));
-        console.log(index);
         bannerSection.style.backgroundImage = `url(${apiPaths.frontUrl}${list[index].backdrop_path})`;
         const div = document.createElement('div');
         div.className = 'banner-content flex';
